@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"path/filepath"
 )
 
 type Song struct {
@@ -34,8 +35,27 @@ func isFruuppFile(filePath string) bool {
 	return false
 }
 
+func listFruuppFiles(dirPath string) ([]string, error) {
+	entries, err := os.ReadDir(dirPath)
+	if err != nil { return nil, err }
+
+	var fruuppFiles []string
+	for _, entry := range entries {
+		if !entry.IsDir() {
+			filePath := filepath.Join(dirPath, entry.Name())
+			if isFruuppFile(filePath) {
+				fruuppFiles = append(fruuppFiles, filePath)
+			}
+		}
+	}
+
+	return fruuppFiles, nil
+}
+
 func main() {
 	isIt := isFruuppFile("./lyrics/get-em-out-by-friday")
 	fmt.Printf("%t\n", isIt)
-	fmt.Printf("%t", isFruuppFile("thus, spoke zarathustra"))
+	files, _ := listFruuppFiles("./lyrics") 
+	fmt.Println(files)
+	fmt.Println(os.Args[1])
 }
