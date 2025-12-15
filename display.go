@@ -5,12 +5,12 @@ import (
 	"os"
 )
 
-func printDefaultMsg() {
+func displayDefaultMsg() {
 	fmt.Println("FruuppCLI - A command-line tool for displaying custom song lyrics.")
 	fmt.Println("\nType 'fruupp help' for usage.")
 }
 
-func printHelp() {
+func displayHelp() {
 	fmt.Println("Usage:")
 	fmt.Println("  fruupp <command> [args]")
 	fmt.Println("\nCommands:")
@@ -18,15 +18,15 @@ func printHelp() {
 	fmt.Println("  housewithnodoor")
 }
 
-func printList() {
+func displayListSongs() {
 	fmt.Println("just a placeholder. supersister got a present from nancy!")
 }
 
-func printError(msg string) {
+func displayError(msg string) {
 	fmt.Fprintf(os.Stderr, "Error: %s\n", msg)
 	fmt.Fprintln(os.Stderr, "Try 'fruupp help' to sharpen your dull mind.")
 }
 
-func printVersion() {
-	fmt.Println("fruupp v1973")
+func displayVersion() {
+	fmt.Println("fruupp v19.7.3")
 }
