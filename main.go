@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"os"
 )
 
@@ -14,9 +13,15 @@ type Song struct {
 }
 
 func main() {
-	isIt := isFruuppFile("./lyrics/get-em-out-by-friday")
-	fmt.Printf("%t\n", isIt)
-	files, _ := listFruuppFiles("./lyrics") 
-	fmt.Println(files)
-	fmt.Println(os.Args[0])
+	if len(os.Args) < 2 {
+		printDefaultMsg()
+	} else if os.Args[1] == "help" {
+		printHelp()
+	} else if os.Args[1] == "list" {
+		printList()
+	} else if os.Args[1] == "version" || os.Args[1] == "ver" {
+		printVersion()
+	} else {
+		printError("Unknown command.")
+	}
 }
