@@ -19,7 +19,33 @@ func displayHelp() {
 }
 
 func displayListSongs() {
-	fmt.Println("just a placeholder. supersister got a present from nancy!")
+	var dirPath string
+	if len(os.Args) >= 2 && os.Args[1] == "list" {
+		if len(os.Args) >= 3 {
+			dirPath = os.Args[2]
+		} else {
+			dirPath = "./"
+		}
+	}
+
+	files, err := listFruuppFiles(dirPath)
+	if err != nil {
+		if os.IsNotExist(err) {
+			displayError("Directory doesn't exist.")
+		} else {
+			displayError(fmt.Sprintf("Failed to list files: %v\n", err))
+		}
+		return
+	}
+
+	if len(files) == 0 {
+		fmt.Printf("No fruupp files found in: %s\n", dirPath)
+		return
+	}
+
+	for _, file := range files {
+		fmt.Printf("%s\n", file)
+	}
 }
 
 func displayError(msg string) {
