@@ -14,14 +14,20 @@ type Song struct {
 
 func main() {
 	if len(os.Args) < 2 {
-		printDefaultMsg()
-	} else if os.Args[1] == "help" {
-		printHelp()
-	} else if os.Args[1] == "list" {
-		printList()
-	} else if os.Args[1] == "version" || os.Args[1] == "ver" {
-		printVersion()
-	} else {
-		printError("Unknown command.")
+		displayDefaultMsg()
+		return
+	}
+
+	switch os.Args[1] {
+	case "help":
+		displayHelp()
+	case "version":
+		displayVersion()
+	case "ver":
+		displayVersion()
+	case "list":
+		displayListSongs()
+	default:
+		displayError("Unknown command.")
 	}
 }
