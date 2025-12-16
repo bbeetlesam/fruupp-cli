@@ -29,5 +29,6 @@ func main() {
 		displayListSongs()
 	default:
 		displayError("Unknown command.")
+		os.Exit(1)
 	}
 }
