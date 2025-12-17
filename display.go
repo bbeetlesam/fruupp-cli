@@ -39,13 +39,21 @@ func displayListSongs() {
 	}
 
 	if len(files) == 0 {
-		fmt.Printf("No fruupp files found in: %s\n", dirPath)
+		fmt.Println("No fruupp files found.")
 		return
 	}
 
 	for _, file := range files {
 		fmt.Printf("%s\n", file)
 	}
+}
+
+func displaySong(song *Song) {
+	fmt.Printf("Title: %s\n", song.Title)
+	fmt.Printf("Artist: %s\n", song.Artist)
+	fmt.Printf("Album: %s\n", song.Album)
+	fmt.Printf("Released Year: %s\n\n", song.Year)
+	fmt.Println(song.Lyrics)
 }
 
 func displayError(msg string) {
