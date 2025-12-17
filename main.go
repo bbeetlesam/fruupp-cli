@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"os"
 )
 
@@ -16,7 +17,22 @@ func main() {
 	case "version":
 		displayVersion()
 	case "list":
-		displayListSongs()
+		dirPath := "./"
+		if len(os.Args) >= 3 {
+			dirPath = os.Args[2]
+		}
+
+		files, err := listFruuppFiles(dirPath)
+		if err != nil {
+			if os.IsNotExist(err) {
+				displayError("Directory doesn't exist.")
+			} else {
+				displayError(fmt.Sprintf("Failed to list files: %v\n", err))
+			}
+			os.Exit(1)
+		}
+
+		displayListSongs(files)
 	case "view":
 		if len(os.Args) >= 3 {
 			filePath := os.Args[2]

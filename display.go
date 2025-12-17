@@ -20,26 +20,7 @@ func displayHelp() {
 	fmt.Println("  version          Show version information")
 }
 
-func displayListSongs() {
-	var dirPath string
-	if len(os.Args) >= 2 && os.Args[1] == "list" {
-		if len(os.Args) >= 3 {
-			dirPath = os.Args[2]
-		} else {
-			dirPath = "./"
-		}
-	}
-
-	files, err := listFruuppFiles(dirPath)
-	if err != nil {
-		if os.IsNotExist(err) {
-			displayError("Directory doesn't exist.")
-		} else {
-			displayError(fmt.Sprintf("Failed to list files: %v\n", err))
-		}
-		return
-	}
-
+func displayListSongs(files []string) {
 	if len(files) == 0 {
 		fmt.Println("No fruupp files found.")
 		return
