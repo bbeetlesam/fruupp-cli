@@ -20,7 +20,7 @@ func isFruuppFile(filePath string) bool {
 		firstLine := scanner.Text()
 		firstLine = strings.TrimSpace(firstLine)
 
-		return firstLine == "#!fruupp"
+		return firstLine == FruuppShebang
 	}
 
 	return false
