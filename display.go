@@ -14,8 +14,10 @@ func displayHelp() {
 	fmt.Println("Usage:")
 	fmt.Println("  fruupp <command> [args]")
 	fmt.Println("\nCommands:")
-	fmt.Println("  whatevershebringwesing")
-	fmt.Println("  housewithnodoor")
+	fmt.Println("  help             Where you currently are :)")
+	fmt.Println("  list <dir>       List all fruupp files in directory")
+	fmt.Println("  view <file>      Display lyrics from a fruupp file")
+	fmt.Println("  version          Show version information")
 }
 
 func displayListSongs() {
