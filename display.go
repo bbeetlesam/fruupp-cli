@@ -45,5 +45,5 @@ func displayError(msg string) {
 }
 
 func displayVersion() {
-	fmt.Println("fruupp v19.7.3")
+	fmt.Println("fruupp v0.1.0")
 }
